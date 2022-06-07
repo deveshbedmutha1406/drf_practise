@@ -50,3 +50,4 @@ class BookDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
 
+# i am adding new comments and then comiting.

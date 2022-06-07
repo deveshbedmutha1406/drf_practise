@@ -4,6 +4,10 @@ from .models import Author, Book
 from .serializers import AuthorSerializer, BookSerializer
 from rest_framework.pagination import PageNumberPagination
 
+# for authentication make this imports.
+# from rest_framework.authentication import BasicAuthentication
+# from rest_framework.permissions import IsAuthenticated
+
 # for filtering data make sure to install app.
 from django_filters.rest_framework import DjangoFilterBackend
 
@@ -17,7 +21,9 @@ class AuthorListView(generics.ListCreateAPIView):
     queryset = Author.objects.all()
     serializer_class = AuthorSerializer
     pagination_class = CustomeClass
-    # new property.
+    # new property for authentication...
+    # authentication_classes = [BasicAuthentication,]
+    # permissions_classes = [IsAuthenticated,]
 
 class AuthorDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Author.objects.all()
@@ -45,10 +51,10 @@ class BookListView(generics.ListCreateAPIView):
         @ full text search
         $ Regex search
     """
+    #authentication_classes = [BasicAuthentication]
+    #permissions_classes = [permissions.IsAuthenticated]
 
 class BookDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
 
-# i am adding new comments and then comiting.
-# i am adding comments in branch1 let see what happens.
